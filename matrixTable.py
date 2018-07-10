@@ -11,7 +11,7 @@ is the current row number."""
 import re, os, numpy
 
 #replaces the corresponding word and number in each location of the lists
-def fileReplacement(words,numbers,fileData,userFormat):
+def fileReplacement(words,numbers,fileData,userFormat,first):
     if (userFormat == "") or (userFormat[0:1]!="{:" and userFormat[len(userFormat)-1]!= "}"):
         userFormat = "{:.4E}" #only 5 significant digits
 
@@ -22,7 +22,8 @@ def fileReplacement(words,numbers,fileData,userFormat):
             fileData = fileData[0:fileData.index(string)] + str(userFormat.format(float(numbers[i])))\
                        + fileData[(fileData.index(string) + len(string)):]
             count  += 1
-        print("Found: "+str(count)+" instances of word: "+words[i])
+        if first==0:
+            print("Found: "+str(count)+" instances of word: "+words[i])
     return fileData
 
 def check(matrix,words,fileName,newFolder,format):
@@ -35,30 +36,20 @@ def check(matrix,words,fileName,newFolder,format):
             file = open(fileName)
             fileText = str(file.read())
             file.close()
-            print(fileName+str(i + 1))
-            newText = fileReplacement(words, matrix[i], fileText,format)
+            newText = fileReplacement(words, matrix[i], fileText,format,i)
             if not os.path.exists(newFolder):
                 os.makedirs(newFolder)
             baseName = os.path.splitext(os.path.basename(fileName))
             file = open(os.path.join(newFolder,baseName[0]+"_"+"{0:05}".format(i+1)+baseName[1]), "w")
             file.write(newText)
             file.close()
+    print(str(i + 1)+ " input files created for: "+ baseName[0]+baseName[1])
 
 
-wordList1 = ["youngs_modulus"]
 wordList2 = ["youngs_modulus", "yield_stress", "ultimate_stress"]
-matrixList1 = numpy.random.rand(100,1)
-matrixList2 = numpy.random.rand(100,3)
+matrixList2 = numpy.random.rand(5,3)
 name2 = "PracticeFiles\\beam_GMNIA.inp"
-name1 = "PracticeFiles\\beam_LBA_template.inp"
 folder = "C:\\Users\\gkim68\\Documents\\NewFolder"
 format = "{:.4E}" #ALL FORMATS SHOULD BE IN {:___}
 
 check(matrixList2,wordList2,name2,folder,format)
-
-#use os.join,split, five digits,makes new files itself
-# try 1000 and add option for putting in different folder
-#make into entire class
-
-#only say found once in beginnign
-#created thhese many input files___ print
