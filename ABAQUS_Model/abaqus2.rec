@@ -1,0 +1,5 @@
+# -*- coding: mbcs -*-
+from job import *
+mdb.JobFromInputFile('single_element_20_1', 'single_element_20_1.inp')
+mdb.jobs['single_element_20_1'].submit()
+#* Abaqus/Analysis exited with error.

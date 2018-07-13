@@ -26,7 +26,7 @@ def fileReplacement(words,numbers,fileData,userFormat,first):
             print("Found: "+str(count)+" instances of word: "+words[i])
     return fileData
 
-def check(matrix,words,fileName,newFolder,format):
+def check(matrix,words,fileName,newFolder,format,num):
     for i in range(len(matrix)):
         if (len(matrix[i]) != len(words)):
             print("The length of the words and number lists are not equal in column: " + str(
@@ -40,16 +40,18 @@ def check(matrix,words,fileName,newFolder,format):
             if not os.path.exists(newFolder):
                 os.makedirs(newFolder)
             baseName = os.path.splitext(os.path.basename(fileName))
-            file = open(os.path.join(newFolder,baseName[0]+"_"+"{0:05}".format(i+1)+baseName[1]), "w")
+            file = open(os.path.join(newFolder,baseName[0]+"_"+str(num)+baseName[1]), "w")
             file.write(newText)
             file.close()
     print(str(i + 1)+ " input files created for: "+ baseName[0]+baseName[1])
 
 
-wordList2 = ["youngs_modulus", "yield_stress", "ultimate_stress"]
-matrixList2 = numpy.random.rand(5,3)
-name2 = "PracticeFiles\\beam_GMNIA.inp"
-folder = "C:\\Users\\gkim68\\Documents\\NewFolder"
-format = "{:.4E}" #ALL FORMATS SHOULD BE IN {:___}
 
-check(matrixList2,wordList2,name2,folder,format)
+if __name__ == "__main__":
+    wordList2 = ["youngs_modulus", "yield_stress", "ultimate_stress"]
+    matrixList2 = numpy.random.rand(5,3)
+    name2 = "PracticeFiles\\beam_GMNIA.inp"
+    folder = "C:\\Users\\gkim68\\Documents\\NewFolder"
+    format = "{:.4E}" #ALL FORMATS SHOULD BE IN {:___}
+
+    check(matrixList2,wordList2,name2,folder,format)

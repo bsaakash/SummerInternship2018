@@ -12688,7 +12688,7 @@ BEAM, right_nodes, m_Set-5
 *Density
 2700.,
 *Elastic
-6.8258e+10, 0.3333
+<youngs_modulus>, 0.3333
 **
 ** PARAMETER DEFINITION
 **

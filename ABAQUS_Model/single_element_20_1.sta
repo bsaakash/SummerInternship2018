@@ -1,0 +1,26 @@
+Abaqus/Explicit 6.13-3                           DATE 13-Jul-2018  TIME 12:01:34
+-------------------------------------------------------------------------------
+ PREPROCESSOR WARNING MESSAGES
+-------------------------------------------------------------------------------
+
+
+***WARNING: There are 2 warning messages in the data (.dat) file.  Please
+            check the data file for possible errors in the input file.
+
+
+-------------------------------------------------------------------------------
+  USER SUBROUTINE VUMAT
+-------------------------------------------------------------------------------
+
+
+***WARNING: A material defined in user subroutine VUMAT must be defined as
+            purely elastic (using the initial elastic modulus) at the
+            beginning of the analysis (stepTime=0). This is an informative
+            message. It does not necessarily indicate that user subroutine
+            VUMAT is incorrectly defined.
+
+
+
+***ERROR: NO VUMAT SUBROUTINE WAS SUPPLIED FOR THE USER MATERIAL NAMED:
+          ALUMINUM_DAMAGE
+
