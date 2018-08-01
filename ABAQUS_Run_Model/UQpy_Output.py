@@ -2,15 +2,26 @@ from subprocess import run
 import sys
 import os
 
-#index = sys.argv[1]
-index = 1
+index = sys.argv[1]
+#index = 1
 
 job_prefix = "LBA_beam_"
-# jobname = os.path.join(os.getcwd(),job_prefix+str(index)) #TODO: pick the correct jobname automatically
-jobname = job_prefix+str(index)+".odb "+str(index)
+jobname = os.path.join(os.getcwd(),job_prefix+str(index)) #TODO: pick the correct jobname automatically
+jobname = jobname + ' ' + str(index)
+#jobname = job_prefix+str(index)+".odb "+str(index)
 
-strCommandLine = "abaqus python processOdb.py " + jobname
-run(strCommandLine)
+print("Jobname:")
+print(jobname)
+
+scriptname = os.path.join(os.getcwd(),"processOdb.py")
+
+strCommandLine = "abaqus python "+ scriptname +" -- " + jobname
+
+print("Run command:")
+print(strCommandLine)
+
+#run(strCommandLine)
+os.system(strCommandLine)
 
 # from odbAccess import *
 #

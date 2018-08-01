@@ -12701,7 +12701,7 @@ trshr=5.47688e+08
 ** 
 *Step, name=buckle, nlgeom=NO, perturbation
 *Buckle
-10, , 18, 3000
+2, , 18, 3000
 ** 
 ** BOUNDARY CONDITIONS
 ** 

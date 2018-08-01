@@ -1,12 +1,21 @@
+#from abaqus import *
 from odbAccess import *
 import sys
 
-jobname = sys.argv[1]
-index = sys.argv[2]
+jobname = sys.argv[-2] + ".odb"
+index = sys.argv[-1]
 # index = 1
 #job_prefix = "LBA_beam_"
 # jobname = os.path.join(os.getcwd(),job_prefix+str(index)) #TODO: pick the correct jobname automatically
 #jobname = job_prefix+str(index)+'.odb'
+
+
+print("Opening odb:")
+print(jobname)
+
+print("Index:")
+print(index)
+
 
 a1 = openOdb(jobname)
 f1 = a1.steps['buckle'].frames[2].description
